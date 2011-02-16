@@ -28,21 +28,36 @@ function runAfterJQueryLoad(callback) {
 function patchGbar() {
   var urlSafeQuery = escape($('input[name="q"]').val());
   
-  // CSS classes, ids and inline javascript based on http://google.com markup,
-  // added https:// to links where it works reliably:
+  // Markup based on http://google.com, added https:// to links
+  // only where it works reliably:
   
-  var gbar = '<div id="gbar"><nobr><b class="gb1">Web</b> \
-<a href="http://www.google.com/images?q=' + urlSafeQuery + '" \
-onclick="gbar.qs(this)" class="gb1">Images</a> \
-<a href="http://maps.google.com/maps?q=' + urlSafeQuery + '" \
-onclick="gbar.qs(this)" class="gb1">Maps</a> \
-<a href="https://news.google.com/news?q=' + urlSafeQuery + '" \
-onclick="gbar.qs(this)" class="gb1">News</a> \
-<a href="http://scholar.google.com/scholar?q=' + urlSafeQuery + '" \
-onclick="gbar.qs(this)" class="gb1">Scholar</a> \
-</nobr></div>';
+  var links = [
+    {title:'Images', link: 'http://www.google.com/images?q=' + urlSafeQuery },
+    {title:'Maps', link: 'http://maps.google.com/maps?q=' + urlSafeQuery },
+    {title:'News', link: 'https://news.google.com/news?q=' + urlSafeQuery },
+    {title:'Scholar',link:'http://scholar.google.com/scholar?q='+ urlSafeQuery }
+  ];
   
-  $('#gog').prepend(gbar);
+  var bar = '<div id="gbz"> \
+    <ol class="gbtc"> \
+      <li class="gbt"> \
+        <a class="gbzt gbz0l gbp1" id="gb_1" \
+          onclick="gbar.qsj(this)" \
+          href="http://www.google.com/webhp?hl=en&amp;tab=ww" target="_blank" \
+          name="gb_1"><span class="gbts">Web</span></a>\
+      </li>';
+  
+  for (var i = 0; i < links.length; i++) {
+    bar += '<li class="gbt"><a class="gbzt" id="gb_' + (2 + i) +'" \
+              onclick="gbar.qsj(this)" \
+              href="' + links[i].link + '" name="gb_'+ (2 + i) + '">\
+              <span class="gbts">' + links[i].title + '</span></a> \
+            </li>';
+  }
+  
+  bar += '</ol></div>';
+  
+  $('div#gbw').prepend(bar);
 }
 
 runAfterJQueryLoad(patchGbar);
