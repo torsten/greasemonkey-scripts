@@ -35,11 +35,12 @@ function patchGbar() {
     {title:'Images', link: 'http://www.google.com/images?q=' + urlSafeQuery },
     {title:'Maps', link: 'http://maps.google.com/maps?q=' + urlSafeQuery },
     {title:'News', link: 'https://news.google.com/news?q=' + urlSafeQuery },
-    {title:'Scholar',link:'http://scholar.google.com/scholar?q='+ urlSafeQuery }
+    {title:'Scholar',link:'http://scholar.google.com/scholar?q=' +urlSafeQuery},
+    {title:'Bing', link:'http://www.bing.com/search?setmkt=en-WW&q=' +
+        urlSafeQuery }
   ];
   
-  var bar = '<div id="gbz"> \
-    <ol class="gbtc"> \
+  var bar = '<div id="gbz"><ol class="gbtc"> \
       <li class="gbt"> \
         <a class="gbzt gbz0l gbp1" id="gb_1" \
           onclick="gbar.qsj(this)" \
@@ -49,9 +50,9 @@ function patchGbar() {
   
   for (var i = 0; i < links.length; i++) {
     bar += '<li class="gbt"><a class="gbzt" id="gb_' + (2 + i) +'" \
-              onclick="gbar.qsj(this)" \
-              href="' + links[i].link + '" name="gb_'+ (2 + i) + '">\
-              <span class="gbts">' + links[i].title + '</span></a> \
+              onclick="gbar.qsj(this)" href="' + links[i].link +
+              '" name="gb_'+ (2 + i) + '"><span class="gbts">' +
+              links[i].title + '</span></a> \
             </li>';
   }
   
