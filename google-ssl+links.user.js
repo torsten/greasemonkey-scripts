@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Google SSL + Related Search Links
 // @namespace    http://torstenbecker.eu/
-// @match        https://encrypted.google.com/search*
+// @match        https://encrypted.google.com/*
 // @author       Torsten Becker, Erik Vergobbi Vold
 // @description  Adds the missing links to Google Images, etc. when using Google SSL Search.
 // ==/UserScript==
